@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<title>pokemishi.net</title>
+<link href="https://fonts.googleapis.com/css?family=Arima+Madurai:100,500" rel="stylesheet">
+<link rel="stylesheet" href="./css/normalize.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<header>
+  <nav>
+    <a href="#" id="top">pokemishi.net</a>
+    <ul>
+      <li><a href="#section1" id="linkSec1"></a></li>
+      <li><a href="#section2" id="linkSec2"></a></li>
+      <li><a href="#section3" id="linkSec3"></a></li>
+      <li><a href="#section4" id="linkSec4"></a></li>
+      <li><a href="#section5" id="linkSec5"></a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <section id="section0" data-delighter>
+    <div id="video"></div>
+    <div id="video-overlay">
+      <h1>pokemishi.net</h1>
+      <p>ここにミッシアイコン</p>
+      <p>pokemishi.netのフォントは再考する</p>
+    </div>
+  </section>
+  
+  <section id="section1" data-delighter>
+      <h1>セクション1</h1>
+      <p>iPhoneのサイトでよく使われてるテキスト色を画像にするやつ。</p>
+      <ol>
+        <li>background: url();</li>
+        <li>color: transparent;</li>
+        <li>background-clip: text;</li>
+        <li>-webkit-background-clip: text;</li>
+      </ol>
+      <p>でテキスト色を画像にできる。</p>
+      <p>background-clipプロパティはchrome, opera, safari, androidだと接頭辞-webkitつけないと表示されないので必ず3と4セットで記入すること。</p>
+      <p>※IEは対応してない。</p>
+    </section>
+
+  <section id="section2" data-delighter>
+    <h1>セクション2</h1>
+    <p>
+      こんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちは
+      こんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちは
+      こんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちは
+    </p>
+  </section>
+
+  <section id="section3" data-delighter>
+    <h1>セクション3</h1>
+    <ul>
+      <li>あいうえおあいうえおあいうえお</li>
+      <li>かきくけこかきくけこかきくけこ</li>
+      <li>さしすせそさしすせそさしすせそ</li>
+      <li>たちつてとたちつてとたちつてと</li>
+      <li>なにぬねのなにぬねのなにぬねの</li>
+    </ul>
+  </section>
+
+  <section id="section4" data-delighter>
+    <h1>セクション4</h1>
+    <div>アピールポイント１</div>
+    <div>アピールポイント２</div>
+    <div>アピールポイント３</div>
+    <div class="hukidashi">超スゴい！！！</div>
+  </section>
+
+  <section id="section5" data-delighter>
+    <h1>セクション5</h1>
+    <p>画面いっぱい背景画像にぼんやり影付きテキスト</p>
+    <ol>
+      <li>background: url() cover fixed;</li>
+      <li>text-shadow: 0 0 5px rgba(0, 0, 0, .6)</li>
+    </ol>
+    <p>※5pxはぼかし幅、rgba(0, 0, 0, .6)で透明度0.6の黒</p>
+  </section>
+</main>
+
+<a href="#" id="toTheTop" style="display: none;">
+  <i class="fas fa-angle-up"></i>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./js/jquery.ba-throttle-debounce.min.js"></script>
+<script src="./js/player.js"></script>
+<script src="./js/delighters.js"></script>
+<script src="./js/main.js"></script>
+</body>
+</html>
