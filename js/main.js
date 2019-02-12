@@ -1,106 +1,85 @@
 $(function() {
 
-  var top = document.getElementById('top'),
-      linkSec1 = document.getElementById('linkSec1'),
-      linkSec2 = document.getElementById('linkSec2'),
-      linkSec3 = document.getElementById('linkSec3'),
-      linkSec4 = document.getElementById('linkSec4'),
-      linkSec5 = document.getElementById('linkSec5'),
-      toTheTop = document.getElementById('toTheTop'),
+  var $top      = $('#top'),
+      $anchors  = $('header > nav > ul > li'),
+      $toTheTop = $('#toTheTop'),
 
-      section0 = document.getElementById('section0'),
-      section1 = document.getElementById('section1'),
-      section2 = document.getElementById('section2'),
-      section3 = document.getElementById('section3'),
-      section4 = document.getElementById('section4'),
-      section5 = document.getElementById('section5'),
+      $section  = $('#section'),
+      $skill    = $('#skill'),
+      $works    = $('#works'),
+      $sns      = $('#sns'),
 
-      scrolling = false,
       positionTop = 0,
-      section1OffsetTop = $(section1).offset().top / 3;
+      scrolling = false,
+      threshold;
 
   // リンクをcurrentにする処理
-  function classChange(sec1, sec2, sec3, sec4, sec5) {
-    linkSec1.className = sec1 ? 'current' : '';
-    linkSec2.className = sec2 ? 'current' : '';
-    linkSec3.className = sec3 ? 'current' : '';
-    linkSec4.className = sec4 ? 'current' : '';
-    linkSec5.className = sec5 ? 'current' : '';
+  function classChange(active) {
+    $anchors.find('a').removeClass('current');
+
+    switch (active) {
+      case 0: $anchors.eq(0).find('a').addClass('current');
+              break;
+      case 1: $anchors.eq(1).find('a').addClass('current');
+              break;
+      case 2: $anchors.eq(2).find('a').addClass('current');
+              break;
+    }
   };
 
-  // スクロールした時の処理
-  $(window).on('scroll', $.throttle(1000 / 15, function() {
-    // 右下トップに戻るボタンの表示・非表示
-    var positionTop = document.documentElement.scrollTop;
+  // リサイズ時にウィンドウの高さを再取得する
+  $(window).on('resize', function() {
+    threshold = $(this).height() / 3;
+  });
 
-    if (positionTop < section1OffsetTop) {
-      // cssアニメーションとかぶって変なフェードになるから一旦OFFに
-      toTheTop.style.transition = 'none';
-      $('#toTheTop').fadeOut('slow', function() {
-        toTheTop.style.transition = '';
-      });
+  // スクロール時の処理
+  $(window).on('scroll', $.throttle(1000 / 15, function() {
+    if (scrolling) return;
+    var positionTop = $(this).scrollTop();
+
+    // 右下トップに戻るボタンの表示・非表示
+    if (positionTop < threshold) {
+      $toTheTop.fadeOut('slow');
     } else {
-      toTheTop.style.transition = 'none';
-      $('#toTheTop').fadeIn('slow', function() {
-        toTheTop.style.transition = '';
-      });
+      $toTheTop.fadeIn('slow');
     };
 
-    if(scrolling) return; // 自動スクロール中は処理しない
-
-    // 手動スクロールしたときに自動的にリンクをcurrentにする
-    if(section0.classList.contains('started') && !section0.classList.contains('ended')) {
-      classChange(false, false, false, false, false);
-    } else if(section1.classList.contains('started') && !section1.classList.contains('ended')) {
-      classChange(true, false, false, false, false);
-    } else if(section2.classList.contains('started') && !section2.classList.contains('ended')) {
-      classChange(false, true, false, false, false);
-    } else if(section3.classList.contains('started') && !section3.classList.contains('ended')) {
-      classChange(false, false, true), false, false;
-    } else if(section4.classList.contains('started') && !section4.classList.contains('ended')) {
-      classChange(false, false, false, true, false);
-    } else if(section5.classList.contains('started') && !section5.classList.contains('ended')) {
-      classChange(false, false, false, false, true);
+    // startedクラスのみが付いているものをcurrentにする
+    if($section.hasClass('started') && !$section.hasClass('ended')) {
+      classChange(-1);
+    } else if($skill.hasClass('started') && !$skill.hasClass('ended')) {
+      classChange(0);
+    } else if($works.hasClass('started') && !$works.hasClass('ended')) {
+      classChange(1);
+    } else if($sns.hasClass('started') && !$sns.hasClass('ended')) {
+      classChange(2);
     }
   }));
 
-  // リンクをクリックしたときにcurrentにする
-  top.addEventListener('click', function() {
-    scrolling = true;
-    classChange(false, false, false, false, false);
-  }); 
-  linkSec1.addEventListener('click', function() {
-    scrolling = true;
-    classChange(true, false, false, false, false);
-  });
-  linkSec2.addEventListener('click', function() {
-    scrolling = true;
-    classChange(false, true, false, false, false);
-  });
-  linkSec3.addEventListener('click', function() {
-    scrolling = true;
-    classChange(false, false, true, false, false);
-  });
-  linkSec4.addEventListener('click', function() {
-    scrolling = true;
-    classChange(false, false, false, true, false);
-  });
-  linkSec5.addEventListener('click', function() {
-    scrolling = true;
-    classChange(false, false, false, false, true);
-  });
-  
-  // リンクをクリックしたときの自動スクロール
-  $('a[href^="#"]').click(function() {
+  // リンクをクリックしたときの処理
+  $('a[href^="#"]').click(function(e) {
+    e.preventDefault();
+
+    if ($(this).hasClass('current')) return;
+
     var speed = 400;
-    var href= $(this).attr("href");
+    var href = $(this).attr("href");
     var target = $(href == "#" || href == "" ? 'html' : href);
     var position = target.offset().top;
-    $('body,html').animate({scrollTop:position}, speed, 'swing', function() {
+
+    if (href === '#') {
+      classChange(-1);
+    } else {
+      classChange($(this).closest($anchors).index());
+    }
+
+    scrolling = true;
+
+    $('body,html').stop().animate({scrollTop:position}, speed, 'swing', function() {
       scrolling = false;
     });
-    return false;
+
   });
 
-  $(window).trigger('scroll');
+  $(window).trigger('resize').trigger('scroll');
 });
