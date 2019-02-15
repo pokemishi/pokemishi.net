@@ -4,10 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 <title>pokemishi.net</title>
+<link rel="icon" href="./favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="icon" type="image/png" href="./android-chrome-256x256.png">
+
 <link href="https://fonts.googleapis.com/css?family=Halant|Arima+Madurai:500" rel="stylesheet">
 <link rel="stylesheet" href="./css/normalize.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 <link rel="stylesheet" href="./css/styles.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./js/jquery.ba-throttle-debounce.min.js"></script>
+<script src="./js/player.js"></script>
+<script src="./js/delighters.js"></script>
+<script src="./js/main.js"></script>
 </head>
 <body>
 <header>
@@ -22,6 +32,7 @@
 </header>
 <main>
   <section id="section" data-delighter>
+    <div id="video-background"></div>
     <div id="video"></div>
     <div id="video-overlay">
       <h1>pokemishi.net</h1>
@@ -32,55 +43,50 @@
   
   <section id="skill" data-delighter>
     <h1>SKILL</h1>
-    <p>Operating System</p>
+    <h2>Operating System</h2>
     <ul>
       <li>Linux (CentOS, RHEL, Ubuntu)</li>
       <li>Windows Server (2008～2016)</li>
     </ul>
-    <p>Scripting Language<p>
+    <h2>Scripting Language</h2>
 		<ul>
       <li>Ruby</li>
       <li>Shell Script</li>
 		</ul>
-    <p>Framework<p>
+    <h2>Framework</h2>
 		<ul>
       <li>Ruby on Rails</li>
 		</ul>
-    <p>Data Base<p>
+    <h2>Data Base</h2>
 		<ul>
       <li>MySQL</li>
       <li>SQL Server</li>
       <li>SQLite</li>
 		</ul>
-    <p>Front-End<p>
+    <h2>Front-End</h2>
 		<ul>
       <li>HTML</li>
       <li>CSS</li>
       <li>JavaScript (jQuery)</li>
 		</ul>
-    <p>Virtualization<p>
+    <h2>Virtualization</h2>
 		<ul>
       <li>VMware (ESXi, vSphere, Horizon7)</li>
 		</ul>
-    <p>Cloud<p>
+    <h2>Cloud</h2>
 		<ul>
       <li>AWS</li>
 		</ul>
-    <p>Storage<p>
+    <h2>Storage</h2>
 		<ul>
       <li>XtremIO</li>
-      <li>VNX (5600, 7600)</li>
+      <li>VNX (5700, 7600)</li>
       <li>iStorage</li>
 		</ul>
-    <p>Operation Monitoring<p>
+    <h2>Operation Monitoring</h2>
 		<ul>
       <li>hinemos</li>
       <li>WebSAM</li>
-		</ul>
-	<p>Etc...<p>
-		<ul>
-      <li>Git, GitHub, Bitbucket, Soucetree</li>
-      <li>BIG-IP</li>
 		</ul>
   </section>
 
@@ -109,11 +115,5 @@
 <a href="#" id="toTheTop" style="display: none;">
   <i class="fas fa-angle-up"></i>
 </div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="./js/jquery.ba-throttle-debounce.min.js"></script>
-<script src="./js/player.js"></script>
-<script src="./js/delighters.js"></script>
-<script src="./js/main.js"></script>
 </body>
 </html>

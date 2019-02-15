@@ -41,10 +41,21 @@ function onPlayerReady(e) {
 function onPlayerStateChange(e) {
   var ytStatus = e.target.getPlayerState();
   if (ytStatus == YT.PlayerState.PLAYING) { //再生中
+    $('#video').css('opacity', 1);
   }
   if (ytStatus == YT.PlayerState.ENDED) { //再生後
     ytPlayer.playVideo();
     ytPlayer.mute();
+  }
+}
+
+// errorの発生時
+function onPlayerError(event) {
+  var errorstatus = event.data;
+  var playerWrap = $('#video');
+  //何らかのエラーステータスが渡された場合、youtubeプレイヤーを削除する
+  if (errorstatus !== '') {
+    $(playerWrap).remove();
   }
 }
  
