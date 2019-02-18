@@ -4,7 +4,7 @@ $(function() {
       $anchors  = $('header > nav > ul > li'),
       $toTheTop = $('#toTheTop'),
 
-      $section  = $('#section'),
+      $main     = $('#main'),
       $skill    = $('#skill'),
       $works    = $('#works'),
       $sns      = $('#sns'),
@@ -45,7 +45,7 @@ $(function() {
     };
 
     // startedクラスのみが付いているものをcurrentにする
-    if($section.hasClass('started') && !$section.hasClass('ended')) {
+    if($main.hasClass('started') && !$main.hasClass('ended')) {
       classChange(-1);
     } else if($skill.hasClass('started') && !$skill.hasClass('ended')) {
       classChange(0);
