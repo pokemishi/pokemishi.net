@@ -1,17 +1,39 @@
 $(function() {
 
-  var $top      = $('#top'),
-      $anchors  = $('header > nav > ul > li'),
-      $toTheTop = $('#toTheTop'),
+  var $anchors   = $('header > nav > ul > li'),
+      $toTheTop  = $('#toTheTop'),
 
-      $main     = $('#main'),
-      $skill    = $('#skill'),
-      $works    = $('#works'),
-      $sns      = $('#sns'),
+      $main      = $('#main'),
+      $skill     = $('#skill'),
+      $works     = $('#works'),
+      $sns       = $('#sns'),
+      $flexItems = $skill.find('.flex-item'),
 
       positionTop = 0,
       scrolling = false,
-      threshold;
+      threshold,
+      ua = navigator.userAgent;
+
+  // iOSでbackground:fixedが効かない問題の対処
+  if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPad') > 0) {
+    $('#video-background, #sns').css({
+      backgroundAttachment: 'scroll'
+    });
+  }
+
+  // #skill h2のbackgroundPositionを個別に変える
+  $flexItems.each(function(i) {
+    var left = ($(this).position().left / $skill.outerWidth()) * 100,
+        top  = ($(this).position().top / $skill.outerHeight()) * 100,
+
+        // 柄を綺麗に出すための調整用数値
+        leftAdjust = 40,
+        topAdjust = 20;
+
+    $(this).find('h2').css({
+      backgroundPosition: (left + leftAdjust) + '% ' + (top + topAdjust) + '%'
+    });
+  });
 
   // リンクをcurrentにする処理
   function classChange(active) {
