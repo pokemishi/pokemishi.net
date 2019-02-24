@@ -12,17 +12,30 @@ $(function() {
       positionTop = 0,
       scrolling = false,
       threshold,
-      ua = navigator.userAgent;
+      ua = navigator.userAgent.toLowerCase();
 
   // iOSでbackground:fixedが効かない問題の対処
-  if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPad') > 0) {
+  if (ua.indexOf('iphone') > 0 || ua.indexOf('ipad') > 0) {
     $('#video-background, #sns').css({
       backgroundAttachment: 'scroll'
     });
   }
 
+  // Edgeのblur部分がおかしいので隠す
+  if (ua.indexOf('edge') > 0) {
+    $('head').append('<style type="text/css">#sns:before{display:none}</style>');
+  } 
+
+  // IEでbackground-clip:textが無効なので書き換え
+  if (ua.indexOf('msie') > 0 || ua.indexOf('trident') > 0) {
+    $skill.find('h2').css({
+      background: 'none',
+      color: '#1464b4'
+    });
+  }
+
   // #skill h2のbackgroundPositionを個別に変える
-  $flexItems.each(function(i) {
+  $flexItems.each(function() {
     var left = ($(this).position().left / $skill.outerWidth()) * 100,
         top  = ($(this).position().top / $skill.outerHeight()) * 100,
 
@@ -65,6 +78,19 @@ $(function() {
     } else {
       $toTheTop.fadeIn('slow');
     };
+
+    // iPhoneオーバースクロール時にvideo部分が見えてしまうのを防止
+    if(positionTop > $works.position().top) {
+      $('#video-background').css({
+        background: '#000',
+        zIndex: -2
+      });
+    } else {
+      $('#video-background').css({
+        background: "url('./img/star_bg.jpg') 50% /cover no-repeat",
+        zIndex: -4
+      });
+    }
 
     // startedクラスのみが付いているものをcurrentにする
     if($main.hasClass('started') && !$main.hasClass('ended')) {

@@ -137,7 +137,7 @@ header > nav > ul > li > a.current {
 }
 
 #video-background {
-  z-index: -3;
+  z-index: -4;
   background: url('../img/star_bg.jpg') 50% /cover no-repeat;
   background-attachment: fixed;
 }
@@ -153,7 +153,7 @@ header > nav > ul > li > a.current {
 }
 
 #video {
-  z-index: -2;
+  z-index: -3;
   opacity: 0;
   transition: all .5s ease-out;
 }
@@ -162,7 +162,7 @@ header > nav > ul > li > a.current {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
-  z-index: -1;
+  z-index: -2;
 }
 
 #video-overlay > h1 {
@@ -355,15 +355,13 @@ header > nav > ul > li > a.current {
   bottom: 10px;
   right: 10px;
   background: #fff;
-  opacity: 0.2;
+  opacity: 0.3;
   width: 100px;
   height: 100px;
   border-radius: 50%;
   color: #555;
-  box-shadow: 0 0 5px rgba(0 ,0 ,0, .4);
-  font-weight: bold;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .5);
   font-size: 7rem;
-  line-height: 7rem;
   text-align: center;
   cursor: pointer;
   display: none;
@@ -374,8 +372,8 @@ header > nav > ul > li > a.current {
 }
 
 #toTheTop > i {
-  vertical-align: -24%;
   text-shadow: -1px -1px 1px rgba(0, 0, 0);
+  line-height: 95px;
 }
 
 @media (max-width: 768px) {
@@ -383,6 +381,8 @@ header > nav > ul > li > a.current {
     width: 70px;
     height: 70px;
     font-size: 5rem;
-    line-height: 5rem;
+  }
+  #toTheTop > i {
+    line-height: 70px;
   }
 }
