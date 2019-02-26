@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="description" content="pokemishiの技術ポートフォリオサイト">
 <title>pokemishi.net</title>
 <link rel="icon" href="./favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="./apple-touch-icon.png">
@@ -12,170 +13,186 @@
 <link rel="stylesheet" href="./css/normalize.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<header>
+  <nav>
+    <a href="#" id="top">pokemishi.net</a>
+    <ul>
+      <li><a href="#skill">SKILL</a></li>
+      <li><a href="#works">WORKS</a></li>
+      <li><a href="#sns">SNS</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="main" data-delighter>
+    <div id="video-background"></div>
+    <div id="video"></div>
+    <div id="video-overlay">
+      <h1>pokemishi.net</h1>
+      <img src='./img/icon.png'>
+      <p>Technology Portfolio Site</p>
+    </div>
+  </section>
+  
+  <section id="skill" data-delighter>
+    <h1>SKILL</h1>
+
+    <div class="flex">
+      <div class="flex-item">
+        <h2>Operating System</h2>
+        <ul>
+          <li>Linux (CentOS, RHEL, Ubuntu)</li>
+          <li>Windows Server (2008～2016)</li>
+        </ul>
+      </div>
+
+      <div class="flex-item">
+        <h2>Scripting Language</h2>
+        <ul>
+          <li>Ruby</li>
+          <li>Shell Script</li>
+        </ul>
+      </div>
+
+      <div class="flex-item">
+        <h2>Framework</h2>
+        <ul>
+          <li>Ruby on Rails</li>
+        </ul>
+      </div>
+
+      <div class="flex-item">
+        <h2>Virtualization</h2>
+        <ul>
+          <li>VMware (ESXi, vSphere, Horizon7)</li>
+        </ul>
+      </div>
+
+      <div class="flex-item">
+        <h2>Data Base</h2>
+        <ul>
+          <li>MySQL</li>
+          <li>SQL Server</li>
+          <li>SQLite</li>
+        </ul>
+      </div>
+
+      <div class="flex-item">
+        <h2>Storage</h2>
+        <ul>
+          <li>XtremIO</li>
+          <li>VNX (5700, 7600)</li>
+          <li>iStorage</li>
+        </ul>
+      </div>
+
+      <div class="flex-item">
+        <h2>Front-End</h2>
+        <ul>
+          <li>HTML, CSS</li>
+          <li>JavaScript (jQuery)</li>
+        </ul>
+      </div>
+
+      <div class="flex-item">
+        <h2>Cloud</h2>
+        <ul>
+          <li>AWS</li>
+        </ul>
+      </div>
+
+      <div class="flex-item">
+        <h2>Operation Monitoring</h2>
+        <ul>
+          <li>hinemos</li>
+          <li>WebSAM</li>
+        </ul>
+      </div>
+
+      <div class="flex-item">
+        <h2>Version Control Software</h2>
+        <ul>
+          <li>Git, GitHub, Bitbucket</li>
+          <li>Sourcetree</li>
+        </ul>
+      </div>
+
+      <div class="flex-item">
+        <h2>Testing Framework</h2>
+        <ul>
+          <li>MiniTest</li>
+        </ul>
+      </div>
+
+      <div class="flex-item">
+        <h2>IDE</h2>
+        <ul>
+          <li>AWS Cloud9</li>
+        </ul>
+      </div>
+
+      <div class="flex-item">
+        <h2>Editor</h2>
+        <ul>
+          <li>Vim</li>
+          <li>Atom</li>
+        </ul>
+      </div>
+
+      <div class="flex-item">
+        <h2>DevOps</h2>
+        <ul>
+          <li>AWS CodeStar</li>
+          <li>AWS CodePipeline</li>
+          <li>AWS CodeDeploy</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="works" data-delighter>
+    <h1>WORKS</h1>
+    <ul>
+      <li>あいうえおあいうえおあいうえお</li>
+      <li>かきくけこかきくけこかきくけこ</li>
+      <li>さしすせそさしすせそさしすせそ</li>
+      <li>たちつてとたちつてとたちつてと</li>
+      <li>なにぬねのなにぬねのなにぬねの</li>
+    </ul>
+  </section>
+
+  <section id="sns" data-delighter>
+    <h1>SNS</h1>
+    <p>画面いっぱい背景画像にぼんやり影付きテキスト</p>
+    <ol>
+      <li>background: url() cover fixed;</li>
+      <li>text-shadow: 0 0 5px rgba(0, 0, 0, .6)</li>
+    </ol>
+    <p>※5pxはぼかし幅、rgba(0, 0, 0, .6)で透明度0.6の黒</p>
+  </section>
+</main>
+
+<a href="#" id="toTheTop" style="display: none;">
+  <i class="fas fa-angle-up"></i>
+</a>
+
+<div class="progress">
+  <div class="progress-top"></div>
+  <div class="progress-under"></div>
+  <div class="progress-inner">
+    <div class="spinner"></div>
+    <p>Loading<span>.</span><span>.</span><span>.</span></p>
+  </div>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="./js/jquery.ba-throttle-debounce.min.js"></script>
 <script src="./js/player.js"></script>
 <script src="./js/delighters.js"></script>
 <script src="./js/main.js"></script>
-</head>
-<body>
-  <header>
-    <nav>
-      <a href="#" id="top">pokemishi.net</a>
-      <ul>
-        <li><a href="#skill">SKILL</a></li>
-        <li><a href="#works">WORKS</a></li>
-        <li><a href="#sns">SNS</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section id="main" data-delighter>
-      <div id="video-background"></div>
-      <div id="video"></div>
-      <div id="video-overlay">
-        <h1>pokemishi.net</h1>
-        <img src='./img/icon.png'>
-        <p>Technology Portfolio Site</p>
-      </div>
-    </section>
-    
-    <section id="skill" data-delighter>
-      <h1>SKILL</h1>
-
-      <div class="flex">
-        <div class="flex-item">
-          <h2>Operating System</h2>
-          <ul>
-            <li>Linux (CentOS, RHEL, Ubuntu)</li>
-            <li>Windows Server (2008～2016)</li>
-          </ul>
-        </div>
-
-        <div class="flex-item">
-          <h2>Scripting Language</h2>
-          <ul>
-            <li>Ruby</li>
-            <li>Shell Script</li>
-          </ul>
-        </div>
-
-        <div class="flex-item">
-          <h2>Framework</h2>
-          <ul>
-            <li>Ruby on Rails</li>
-          </ul>
-        </div>
-
-        <div class="flex-item">
-          <h2>Data Base</h2>
-          <ul>
-            <li>MySQL</li>
-            <li>SQL Server</li>
-            <li>SQLite</li>
-          </ul>
-        </div>
-
-        <div class="flex-item">
-          <h2>Front-End</h2>
-          <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript (jQuery)</li>
-          </ul>
-        </div>
-
-        <div class="flex-item">
-          <h2>Virtualization</h2>
-          <ul>
-            <li>VMware (ESXi, vSphere, Horizon7)</li>
-          </ul>
-        </div>
-
-        <div class="flex-item">
-          <h2>Cloud</h2>
-          <ul>
-            <li>AWS</li>
-          </ul>
-        </div>
-
-        <div class="flex-item">
-          <h2>Storage</h2>
-          <ul>
-            <li>XtremIO</li>
-            <li>VNX (5700, 7600)</li>
-            <li>iStorage</li>
-          </ul>
-        </div>
-
-        <div class="flex-item">
-          <h2>Operation Monitoring</h2>
-          <ul>
-            <li>hinemos</li>
-            <li>WebSAM</li>
-          </ul>
-        </div>
-
-        <div class="flex-item">
-          <h2>Version Control Software</h2>
-          <ul>
-            <li>Git, GitHub, Bitbucket</li>
-            <li>Sourcetree</li>
-          </ul>
-        </div>
-
-        <div class="flex-item">
-          <h2>Testing Framework</h2>
-          <ul>
-            <li>MiniTest</li>
-          </ul>
-        </div>
-
-        <div class="flex-item">
-          <h2>Editor</h2>
-          <ul>
-            <li>Vim</li>
-            <li>Atom</li>
-          </ul>
-        </div>
-
-        <div class="flex-item">
-          <h2>IDE</h2>
-          <ul>
-            <li>AWS Cloud9</li>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-
-    <section id="works" data-delighter>
-      <h1>WORKS</h1>
-      <ul>
-        <li>あいうえおあいうえおあいうえお</li>
-        <li>かきくけこかきくけこかきくけこ</li>
-        <li>さしすせそさしすせそさしすせそ</li>
-        <li>たちつてとたちつてとたちつてと</li>
-        <li>なにぬねのなにぬねのなにぬねの</li>
-      </ul>
-    </section>
-
-    <section id="sns" data-delighter>
-      <h1>SNS</h1>
-      <p>画面いっぱい背景画像にぼんやり影付きテキスト</p>
-      <ol>
-        <li>background: url() cover fixed;</li>
-        <li>text-shadow: 0 0 5px rgba(0, 0, 0, .6)</li>
-      </ol>
-      <p>※5pxはぼかし幅、rgba(0, 0, 0, .6)で透明度0.6の黒</p>
-    </section>
-  </main>
-
-  <a href="#" id="toTheTop" style="display: none;">
-    <i class="fas fa-angle-up"></i>
-  </a>
-  
 </body>
 </html>

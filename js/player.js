@@ -41,7 +41,7 @@ function onPlayerReady(e) {
 function onPlayerStateChange(e) {
   var ytStatus = e.target.getPlayerState();
   if (ytStatus == YT.PlayerState.PLAYING) { //再生中
-    $('#video').css('opacity', 1);
+    progressComplete();
   }
   if (ytStatus == YT.PlayerState.ENDED) { //再生後
     ytPlayer.playVideo();
@@ -55,6 +55,7 @@ function onPlayerError(event) {
   var playerWrap = $('#video');
   //何らかのエラーステータスが渡された場合、youtubeプレイヤーを削除する
   if (errorstatus !== '') {
+    progressComplete();
     $(playerWrap).remove();
   }
 }
@@ -100,3 +101,24 @@ WIN.resize(function () {
 $(function(){
   yt_screen_retio();
 });
+
+// 動画読み込み完了時の処理
+function progressComplete() {
+  var $progress = $('.progress'),
+      $progressInner = $progress.find('.progress-inner');
+
+  $progressInner.find('.spinner').css({
+    animation: 'spin-complete 1.2s ease-out forwards'
+  });
+  $progressInner.find('p').text('Complete!').css({
+    animation: 'blink-complete 1.2s ease-in forwards'
+  });
+  $progress.find('.progress-top').delay(1700).animate({
+    top: '-100%'
+  }, 700);
+  $progress.find('.progress-under').delay(1700).animate({
+    top: '100%'
+  }, 500, function() {
+    $progress.hide();
+  });
+}

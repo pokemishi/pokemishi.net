@@ -14,24 +14,35 @@ $(function() {
       threshold,
       ua = navigator.userAgent.toLowerCase();
 
-  // iOSでbackground:fixedが効かない問題の対処
+  // iOS表示不具合対応
   if (ua.indexOf('iphone') > 0 || ua.indexOf('ipad') > 0) {
+    // background:fixedが効かない問題の対処
     $('#video-background, #sns').css({
       backgroundAttachment: 'scroll'
     });
+    removeVideo();
   }
 
-  // Edgeのblur部分がおかしいので隠す
+  // Edge表示不具合対応
   if (ua.indexOf('edge') > 0) {
+    // blur部分がおかしいので隠す
     $('head').append('<style type="text/css">#sns:before{display:none}</style>');
   } 
 
-  // IEでbackground-clip:textが無効なので書き換え
+  // IE表示不具合対応
   if (ua.indexOf('msie') > 0 || ua.indexOf('trident') > 0) {
+    // background-clip:textが無効なので書き換え
     $skill.find('h2').css({
       background: 'none',
       color: '#1464b4'
     });
+    removeVideo();
+  }
+
+  // 動画背景が表示されない場合の処理
+  function removeVideo() {
+    $('#video').remove();
+    setTimeout(progressComplete, 1500);
   }
 
   // #skill h2のbackgroundPositionを個別に変える

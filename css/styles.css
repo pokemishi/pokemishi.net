@@ -154,7 +154,6 @@ header > nav > ul > li > a.current {
 
 #video {
   z-index: -3;
-  opacity: 0;
   transition: all .5s ease-out;
 }
 
@@ -384,5 +383,152 @@ header > nav > ul > li > a.current {
   }
   #toTheTop > i {
     line-height: 70px;
+  }
+}
+
+/* progress */
+
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  text-align: center;
+}
+
+.progress-top, .progress-under {
+  position: absolute;
+  left: 0;
+  background: #000;
+  width: 100%;
+  height: 50%;
+  z-index: 11;
+}
+
+.progress-top {
+  top: 0%;
+}
+
+.progress-under {
+  top: 50%;
+}
+
+.progress-inner {
+  position: absolute;
+  width: 90px;
+  height: 100px;
+  top: calc(50% - (100px / 2));
+  left: calc(50% - (90px / 2));
+  z-index: 12;
+}
+
+.spinner {
+  margin: 0 auto;
+  width: 40px;
+  height: 40px;
+  border: solid 7px;
+  border-top-color: #00dffc;
+  border-left-color: #008c9e;
+  border-bottom-color: #005f6b;
+  border-right-color: #343838;
+  animation: spin .7s ease-in-out infinite;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  90%, 100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-complete {
+  0% {
+    opacity: 1;
+    border-width: 7px;
+    transform: rotate(0deg);
+  }
+  40%, 75% {
+    opacity: 1;
+    border-width: 20px;
+    transform: rotate(360deg);
+    border-color: #008c9e;
+  }
+  100% {
+    opacity: 0;
+    border-width: 0px;
+    border-color: #00dffc;
+  }
+}
+
+.progress-inner p {
+  text-shadow: 0 0 10px rgba(255, 255, 255, .9);
+  font-family: 'Arima Madurai', sans-serif;
+  color: #fff;
+  font-size: 1.9rem;
+  opacity: 0.6;
+  text-align: left;
+}
+
+@keyframes blink-complete {
+  0% {
+    opacity: 0.6;
+    text-align: center;
+  }
+  50%, 80% {
+    opacity: 1;
+    text-align: center;
+  }
+  100% {
+    opacity: 0;
+    text-align: center;
+  }
+}
+
+.progress-inner p > span {
+  opacity: 0;
+}
+
+.progress-inner p > span:nth-child(1) {
+  animation: dot1 .71s step-end infinite;
+}
+
+.progress-inner p > span:nth-child(2) {
+  animation: dot2 .71s step-end infinite;
+}
+
+.progress-inner p > span:nth-child(3) {
+  animation: dot3 .71s step-end infinite;
+}
+
+@keyframes dot1 {
+  0% {
+    opacity: 0;
+  }
+  20%, 100% {
+    opacity: 1;
+  }
+}
+
+@keyframes dot2 {
+  0% {
+    opacity: 0;
+  }
+  30%, 100% {
+    opacity: 1;
+  }
+}
+
+@keyframes dot3 {
+  0% {
+    opacity: 0;
+  }
+  45%, 100% {
+    opacity: 1;
   }
 }
