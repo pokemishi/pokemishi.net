@@ -32,7 +32,7 @@ $(function() {
   // IE表示不具合対応
   if (ua.indexOf('msie') > 0 || ua.indexOf('trident') > 0) {
     // background-clip:textが無効なので書き換え
-    $skill.find('h2').css({
+    $skill.find('h3').css({
       background: 'none',
       color: '#1464b4'
     });
@@ -45,7 +45,7 @@ $(function() {
     setTimeout(progressComplete, 1500);
   }
 
-  // #skill h2のbackgroundPositionを個別に変える
+  // #skill h3のbackgroundPositionを個別に変える
   $flexItems.each(function() {
     var left = ($(this).position().left / $skill.outerWidth()) * 100,
         top  = ($(this).position().top / $skill.outerHeight()) * 100,
@@ -54,7 +54,7 @@ $(function() {
         leftAdjust = 40,
         topAdjust = 20;
 
-    $(this).find('h2').css({
+    $(this).find('h3').css({
       backgroundPosition: (left + leftAdjust) + '% ' + (top + topAdjust) + '%'
     });
   });

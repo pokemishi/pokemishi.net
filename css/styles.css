@@ -22,18 +22,17 @@ section {
   overflow: hidden;
 }
 
-section h1 {
+section h2 {
   font-size: 4.7rem;
+  margin: 0.3em 0 1em;
 }
 
-section > ul,
-section > ol {
+section > ul {
   margin: 0;
 }
 
 
-section > ul > li,
-section > ol > li {
+section > ul > li {
   font-size: 2.5rem;
   line-height: 4.5rem;
 }
@@ -231,10 +230,10 @@ header > nav > ul > li > a.current {
   line-height: 3.5rem;
 }
 
-#skill > .flex h2 {
+#skill > .flex h3 {
   font-size: 3.0rem;
   line-height: 1.3;
-  margin-bottom: 5px;
+  margin: 22px 0 5px;
   background: url(../img/KZKH.jpg);
   color: transparent;
   background-clip: text;
@@ -256,12 +255,12 @@ header > nav > ul > li > a.current {
   background: hsl(200, 50%, 60%);
 }
 
-#works > h1 {
+#works > h2 {
   transform: translatex(-100%);
   transition: all .7s ease-out;
 }
 
-#works.delighter.started > h1 {
+#works.delighter.started > h2 {
   transform: none;
   transition: all .7s ease-out;
 }
@@ -319,33 +318,61 @@ header > nav > ul > li > a.current {
   bottom: -2px;
 }
 
-#sns > h1,
-#sns > p,
-#sns > ol {
+#sns > h2 {
   opacity: 0;
   transition: all .7s ease-out;
 }
 
-#sns.delighter.started > h1 {
+#sns.delighter.started > h2 {
   opacity: 1;
-  transition: all .7s ease-out;
 }
 
-#sns.delighter.started > p:nth-of-type(1) {
-  opacity: 1;
-  transition: all .7s ease-out .2s;
+#sns > .flex {
+  display: flex;
+  justify-content: space-between;
 }
 
-#sns.delighter.started > ol {
-  opacity: 1;
-  transition: all .7s ease-out .4s;
+#sns > .flex > .flex-item {
+  align-self: stretch;
+  box-sizing: border-box;
+  opacity: 0;
 }
 
-#sns.delighter.started > p:nth-of-type(2) {
+#sns.delighter.started > .flex > .flex-item {
   opacity: 1;
-  transition: all .7s ease-out .6s;
 }
 
+#sns > .flex > .flex-item:nth-child(1) {
+  transition: all .7s ease-out .15s;
+}
+
+#sns > .flex > .flex-item:nth-child(2) {
+  transition: all .7s ease-out .45s;
+}
+
+#sns > .flex > .flex-item:nth-child(3) {
+  transition: all .7s ease-out .65s;
+}
+
+#sns > .flex > .flex-item img {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  transition: all .2s;
+}
+
+@media (max-width: 768px) {
+  #sns > .flex > .flex-item img {
+    width: 90px;
+    height: 90px;
+  }
+}
+@media (max-width: 500px) {
+  #sns > .flex > .flex-item img {
+    width: 70px;
+    height: 70px;
+  }
+}
 
 /* toTheTop */
 
@@ -395,7 +422,6 @@ header > nav > ul > li > a.current {
   width: 100%;
   height: 100%;
   z-index: 10;
-  text-align: center;
 }
 
 .progress-top, .progress-under {
@@ -442,7 +468,7 @@ header > nav > ul > li > a.current {
   0% {
     transform: rotate(0deg);
   }
-  90%, 100% {
+  80%, 100% {
     transform: rotate(360deg);
   }
 }
@@ -452,6 +478,7 @@ header > nav > ul > li > a.current {
     opacity: 1;
     border-width: 7px;
     transform: rotate(0deg);
+    box-shadow: 0 0 7px rgba(0, 223, 252, .7);
   }
   40%, 75% {
     opacity: 1;
@@ -463,6 +490,7 @@ header > nav > ul > li > a.current {
     opacity: 0;
     border-width: 0px;
     border-color: #00dffc;
+    box-shadow: 0 0 7px rgba(0, 223, 252, .7);
   }
 }
 
@@ -475,7 +503,7 @@ header > nav > ul > li > a.current {
   text-align: left;
 }
 
-@keyframes blink-complete {
+@keyframes text-complete {
   0% {
     opacity: 0.6;
     text-align: center;
@@ -495,15 +523,15 @@ header > nav > ul > li > a.current {
 }
 
 .progress-inner p > span:nth-child(1) {
-  animation: dot1 .71s step-end infinite;
+  animation: dot1 .7s step-end infinite .1s;
 }
 
 .progress-inner p > span:nth-child(2) {
-  animation: dot2 .71s step-end infinite;
+  animation: dot2 .7s step-end infinite .1s;
 }
 
 .progress-inner p > span:nth-child(3) {
-  animation: dot3 .71s step-end infinite;
+  animation: dot3 .7s step-end infinite .1s;
 }
 
 @keyframes dot1 {

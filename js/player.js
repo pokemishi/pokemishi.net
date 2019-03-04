@@ -20,7 +20,7 @@ function onYouTubeIframeAPIReady() {
       iv_load_policy: 3, // アノテーションの非表示
       wmode: 'transparent',
       loop: 1,
-      playlist: 'iV2YmKMq_7Q'
+      playlist: ytID
     },
     events: {
       'onReady': onPlayerReady,
@@ -55,8 +55,8 @@ function onPlayerError(event) {
   var playerWrap = $('#video');
   //何らかのエラーステータスが渡された場合、youtubeプレイヤーを削除する
   if (errorstatus !== '') {
-    progressComplete();
     $(playerWrap).remove();
+    setTimeout(progressComplete, 1500);
   }
 }
  
@@ -111,11 +111,11 @@ function progressComplete() {
     animation: 'spin-complete 1.2s ease-out forwards'
   });
   $progressInner.find('p').text('Complete!').css({
-    animation: 'blink-complete 1.2s ease-in forwards'
+    animation: 'text-complete 1.2s ease-in forwards'
   });
   $progress.find('.progress-top').delay(1700).animate({
-    top: '-100%'
-  }, 700);
+    top: '-50%'
+  }, 500);
   $progress.find('.progress-under').delay(1700).animate({
     top: '100%'
   }, 500, function() {
