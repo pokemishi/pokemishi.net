@@ -252,7 +252,7 @@ header > nav > ul > li > a.current {
 /* works */
 
 #works {
-  background: hsl(200, 50%, 60%);
+  background: hsl(230, 50%, 23%);
 }
 
 #works > h2 {
@@ -299,23 +299,8 @@ header > nav > ul > li > a.current {
 /* sns */
 
 #sns {
-  background: url(../img/cat_bg.jpg) 35% 50% / cover;
-  background-attachment: fixed;
-  text-shadow:  0 0 5px rgba(0, 0, 0, .6);
-  position: relative;
-  z-index: 0;
-}
-
-#sns:before {
-  content: '';
-  background: inherit;
-  z-index: -1;
-  filter: blur(2px);
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
+  background: hsl(230, 50%, 15%);
+  min-height: 50vh;
 }
 
 #sns > h2 {
@@ -330,45 +315,36 @@ header > nav > ul > li > a.current {
 #sns > .flex {
   display: flex;
   justify-content: space-between;
+  height: 30vh;
 }
 
-#sns > .flex > .flex-item {
-  align-self: stretch;
+#sns .flex-item {
+  align-self: center;
   box-sizing: border-box;
   opacity: 0;
 }
 
-#sns.delighter.started > .flex > .flex-item {
-  opacity: 1;
-}
-
-#sns > .flex > .flex-item:nth-child(1) {
+#sns.delighter.started .flex-item {
+  opacity: 0.8;
   transition: all .7s ease-out .15s;
 }
 
-#sns > .flex > .flex-item:nth-child(2) {
-  transition: all .7s ease-out .45s;
+#sns .flex-item a {
+  transition: all .5s ease-out;
 }
 
-#sns > .flex > .flex-item:nth-child(3) {
-  transition: all .7s ease-out .65s;
+#sns .flex-item a:hover {
+  opacity: 0.6;
 }
 
-#sns > .flex > .flex-item img {
-  width: 120px;
-  height: 120px;
-  border-radius: 10px;
-  transition: all .2s;
+#sns .flex-item img {
+  transition: all 1.2s ease-out;
+  width: 100px;
+  height: 100px;
 }
 
 @media (max-width: 768px) {
-  #sns > .flex > .flex-item img {
-    width: 90px;
-    height: 90px;
-  }
-}
-@media (max-width: 500px) {
-  #sns > .flex > .flex-item img {
+  #sns .flex-item img {
     width: 70px;
     height: 70px;
   }

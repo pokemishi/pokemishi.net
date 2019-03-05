@@ -17,17 +17,11 @@ $(function() {
   // iOS表示不具合対応
   if (ua.indexOf('iphone') > 0 || ua.indexOf('ipad') > 0) {
     // background:fixedが効かない問題の対処
-    $('#video-background, #sns').css({
+    $('#video-background').css({
       backgroundAttachment: 'scroll'
     });
     removeVideo();
   }
-
-  // Edge表示不具合対応
-  if (ua.indexOf('edge') > 0) {
-    // blur部分がおかしいので隠す
-    $('head').append('<style type="text/css">#sns:before{display:none}</style>');
-  } 
 
   // IE表示不具合対応
   if (ua.indexOf('msie') > 0 || ua.indexOf('trident') > 0) {
