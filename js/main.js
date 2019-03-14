@@ -1,18 +1,22 @@
 $(function() {
 
-  var $anchors   = $('header > nav > ul > li'),
-      $toTheTop  = $('#toTheTop'),
+  var $anchors      = $('header > nav > ul > li'),
+      $toTheTop     = $('#toTheTop'),
 
-      $main      = $('#main'),
-      $skill     = $('#skill'),
-      $works     = $('#works'),
-      $sns       = $('#sns'),
-      $flexItems = $skill.find('.flex-item'),
+      $main         = $('#main'),
+      $skill        = $('#skill'),
+      $works        = $('#works'),
+      $sns          = $('#sns'), 
+      $skillItems   = $skill.find('.flex-item'),
+      $workItem     = $works.find('.flex-item'),
+      $workArrow    = $works.find('.work_detail_arrow'),
 
-      positionTop = 0,
-      scrolling = false,
+      arrowWidth    = $workArrow.outerWidth(),
+      currentWork   = -1,
+      positionTop   = 0,
+      scrolling     = false,
       threshold,
-      ua = navigator.userAgent.toLowerCase();
+      ua            = navigator.userAgent.toLowerCase();
 
   // iOS表示不具合対応
   if (ua.indexOf('iphone') > 0 || ua.indexOf('ipad') > 0) {
@@ -40,7 +44,7 @@ $(function() {
   }
 
   // #skill h3のbackgroundPositionを個別に変える
-  $flexItems.each(function() {
+  $skillItems.each(function() {
     var left = ($(this).position().left / $skill.outerWidth()) * 100,
         top  = ($(this).position().top / $skill.outerHeight()) * 100,
 
@@ -67,9 +71,10 @@ $(function() {
     }
   };
 
-  // リサイズ時にウィンドウの高さを再取得する
+  // リサイズ時の処理
   $(window).on('resize', function() {
     threshold = $(this).height() / 3;
+    updateArrow();
   });
 
   // スクロール時の処理
@@ -92,7 +97,7 @@ $(function() {
       });
     } else {
       $('#video-background').css({
-        background: "url('./img/star_bg.jpg') 50% /cover no-repeat",
+        background: "url('./img/star_bg.jpg') 50% / cover no-repeat",
         zIndex: -4
       });
     }
@@ -135,4 +140,42 @@ $(function() {
   });
 
   $(window).trigger('resize').trigger('scroll');
+
+  // worksクリック時の処理
+  $workItem.on('click', 'a', function(e) {
+    e.preventDefault();
+    var nextWork           = $(this).closest($workItem).index(),
+        $nextWorkDetail    = $('#work' + (nextWork + 1)),
+        $currentWorkDetail = $('#work' + (currentWork + 1));
+
+    if(currentWork === -1) {
+      $nextWorkDetail.slideDown();
+      $workArrow.fadeIn();
+    } else if (currentWork === nextWork) {
+      $currentWorkDetail.slideToggle();
+      $workArrow.toggle();
+    } else {
+      $nextWorkDetail.insertBefore($currentWorkDetail);
+      $currentWorkDetail.slideUp();
+      $nextWorkDetail.slideDown();
+    }
+    currentWork = nextWork;
+
+    updateArrow();
+  });
+
+  // workArrowの位置更新
+  function updateArrow() {
+    var position;
+
+    if (currentWork === -1) {
+      position = -arrowWidth;
+    } else {
+      position = $workItem.eq(currentWork).position().left + ($workItem.width() / 2) - (arrowWidth / 2);
+    }
+
+    $workArrow.stop().animate({
+      left: position + 'px'
+    }, 300);
+  }
 });

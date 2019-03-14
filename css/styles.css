@@ -7,7 +7,7 @@ html {
 body {
   margin: 0;
   color: #fff;
-  font-family: 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック','MS PGothic','MS UI Gothic',Helvetica,Arial,sans-serif;
+  font-family: '游ゴシック Medium', '游ゴシック体', 'Yu Gothic Medium', YuGothic, 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 }
 
 p {
@@ -29,15 +29,6 @@ section h2 {
   font-size: 5.5rem;
   margin: 0 0 8vh;
   text-align: center;
-}
-
-section > ul {
-  margin: 0;
-}
-
-section > ul > li {
-  font-size: 2.5rem;
-  line-height: 4.5rem;
 }
 
 /* header */
@@ -168,7 +159,7 @@ header ul > li > a.current {
 
 #video-overlay > h1 {
   font-size: 8rem;
-  font-weight: 100;
+  font-weight: 300;
   margin-bottom: 20px;
   transition: all 1.5s ease-out;
   font-family: 'Halant', serif;
@@ -218,29 +209,36 @@ header ul > li > a.current {
   width: calc(50% - 10px);
   border: 2px solid #333;
   border-radius: 5px;
-  padding: 0 30px 10px;
+  padding: 22px 30px 15px;
   margin-bottom: 10px;
   box-sizing: border-box;
   overflow-wrap: break-word;
+  word-wrap: break-word;
+  font-family: 'Halant', serif;
 }
 
 #skill .flex-item:nth-child(odd) {
   margin-right: 10px;
 }
 
-#skill .flex-item > ul > li {
-  font-size: 2rem;
-  line-height: 3.5rem;
-}
-
 #skill .flex-item > h3 {
-  font-size: 3.0rem;
-  line-height: 1.3;
-  margin: 22px 0 5px;
+  font-weight: 600;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin: 0 0 10px;
   background: url(../img/KZKH.jpg);
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
+}
+
+#skill .flex-item > ul {
+  margin: 0;
+}
+
+#skill .flex-item > ul > li {
+  font-size: 2.2rem;
+  line-height: 3.5rem;
 }
 
 @media (max-width: 768px) {
@@ -255,20 +253,21 @@ header ul > li > a.current {
 /* works */
 
 #works {
-  background: #1D2657;
-  background: -webkit-linear-gradient(45deg, #1D2657, 70%, #3f697f);
-  background: linear-gradient(45deg, #1D2657, 70%, #3f697f);
+  background: #40326b;
+  background: -webkit-linear-gradient(45deg, #40326b, 70%, #1b90a0);
+  background: linear-gradient(45deg, #40326b, 70%, #1b90a0);
 }
 
 #works > .flex {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-bottom: 8vh;
 }
 
 #works .flex-item {
   flex-shrink: 2;
-  flex-basis: 250px;
+  flex-basis: 200px;
 }
 
 #works .flex-item:not(:last-child) {
@@ -279,66 +278,116 @@ header ul > li > a.current {
   box-sizing: border-box;
   width: 100%;
   border-radius: 10px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, .6);
+  box-shadow: 0 0 5px rgba(0, 0, 0, .3);
 }
 
-#work_detail {
-  background: rgba(255, 255, 255, .1);
+.work_detail_wrapper {
+  position: relative;
   width: 100vw;
-  margin: 8vh 0 0 -10vw;
-  padding: 8vh 0;
+  margin-left: -10vw;
+}
+
+.work_detail_arrow {
+  display: none;
+  border-color: transparent transparent rgba(255, 255, 255, .1) transparent;
+  border-width: 0 23px 30px 23px;
+  border-style: solid;
+  position: absolute;
+  top: -30px;
+  width: 0;
+  height: 0;
+}
+
+.work_detail {
+  display: none;
+  background: rgba(255, 255, 255, .1);
+  width: 100%;
+  padding: 50px 15px 30px 0;
   box-sizing: border-box;
   font-size: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
-#work_detail p {
+.work_detail p {
   font-family: 'Halant', serif;
-  margin: 0 0 6vh;
-  font-size: 5rem;
+  margin: 0 3vh 40px;
+  font-size: 3.8rem;
+  line-height: 5rem;
   text-align: center;
 }
 
-#work_detail dl {
+.work_detail dl {
   margin: 0 auto;
-  width: 700px;
+  max-width: 700px;
 }
 
-#work_detail dl div {
+.work_detail dl div {
   border-bottom: 1px dashed rgba(255, 255, 255, .2);
-  padding: 15px 0;
+  padding: 15px 10px;
+  display: flex;
 }
 
-#work_detail dt, #work_detail dd {
-  display: inline-block;
-  font-size: 1.8rem;
-  line-height: 2.5rem;
+.work_detail dt, .work_detail dd {
+  font-size: 1.7rem;
+  line-height: 2.3rem;
 }
 
-#work_detail dt {
-  width: 150px;
-  margin-left: 10px;
+.work_detail dt {
+  flex: 0 0 140px;
 }
 
-#work_detail dd {
+.work_detail dd {
   margin-inline-start: 0;
-  width: 540px;
   vertical-align: top;
+  flex: 2 2 540px;
 }
 
-#work_detail a {
+.work_detail a {
   color: hsl(210, 80%, 80%);
 }
 
-#work_detail img {
+.work_detail img {
   width: 70px;
   height: 70px;
+}
+
+@media (max-width: 768px) {
+  #works .flex-item:not(:last-child) {
+    margin-right: 2vw;
+  }
+  .work_detail dl div {
+    flex-direction: column;
+  }
+  .work_detail dt, .work_detail dd {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    flex: 0 1 auto;
+  }
+  .work_detail dl {
+    margin-left: 3vw;
+    margin-right: calc(3vw + 15px);
+  }
+  .work_detail dt {
+    margin-bottom: 4px;
+  }
+  .work_detail dd {
+    margin-left: 18px;
+  }
+  .work_detail img {
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
+  }
 }
 
 /* sns */
 
 #sns {
-  background: hsl(230, 50%, 15%);
+  background: hsl(260, 50%, 15%);
   min-height: 50vh;
+  transition: all 1.5s ease-out;
+  margin-top: -2px;
 }
 
 #sns > h2 {
