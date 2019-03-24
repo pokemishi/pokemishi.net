@@ -7,12 +7,13 @@ $(function() {
       $skill        = $('#skill'),
       $works        = $('#works'),
       $sns          = $('#sns'), 
-      $skillItems   = $skill.find('.flex-item'),
-      $workItem     = $works.find('.flex-item'),
-      $workArrow    = $works.find('.work_detail_arrow'),
+      $skillItems   = $skill.find('.skill-item'),
+      $workItem     = $works.find('.work-item'),
+      $workArrow    = $works.find('.work-detail-arrow'),
 
       arrowWidth    = $workArrow.outerWidth(),
       currentWork   = -1,
+      openDetail    = -1,
       positionTop   = 0,
       scrolling     = false,
       threshold,
@@ -92,7 +93,7 @@ $(function() {
     // iPhoneオーバースクロール時にvideo部分が見えてしまうのを防止
     if(positionTop > $works.position().top) {
       $('#video-background').css({
-        background: '#000',
+        background: 'hsl(260, 50%, 15%)',
         zIndex: -2
       });
     } else {
@@ -114,6 +115,8 @@ $(function() {
     }
   }));
 
+  $(window).trigger('resize').trigger('scroll');
+
   // リンクをクリックしたときの処理
   $('a[href^="#"]').click(function(e) {
     e.preventDefault();
@@ -133,31 +136,28 @@ $(function() {
 
     scrolling = true;
 
-    $('body,html').stop().animate({scrollTop:position}, speed, 'swing', function() {
+    $('body,html').stop().animate({scrollTop:position}, speed, function() {
       scrolling = false;
     });
-
   });
 
-  $(window).trigger('resize').trigger('scroll');
-
   // worksクリック時の処理
-  $workItem.on('click', 'a', function(e) {
-    e.preventDefault();
-    var nextWork           = $(this).closest($workItem).index(),
+  $workItem.on('click', function() {
+    var nextWork           = $(this).index(),
         $nextWorkDetail    = $('#work' + (nextWork + 1)),
         $currentWorkDetail = $('#work' + (currentWork + 1));
 
     if(currentWork === -1) {
       $nextWorkDetail.slideDown();
-      $workArrow.fadeIn();
+      openDetail = 1;
     } else if (currentWork === nextWork) {
-      $currentWorkDetail.slideToggle();
-      $workArrow.toggle();
+      $currentWorkDetail.stop().slideToggle();
+      openDetail *= -1;
     } else {
       $nextWorkDetail.insertBefore($currentWorkDetail);
       $currentWorkDetail.slideUp();
       $nextWorkDetail.slideDown();
+      openDetail = 1;
     }
     currentWork = nextWork;
 
@@ -168,7 +168,7 @@ $(function() {
   function updateArrow() {
     var position;
 
-    if (currentWork === -1) {
+    if (currentWork === -1 || openDetail === -1) {
       position = -arrowWidth;
     } else {
       position = $workItem.eq(currentWork).position().left + ($workItem.width() / 2) - (arrowWidth / 2);
