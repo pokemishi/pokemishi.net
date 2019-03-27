@@ -401,6 +401,7 @@ header ul > li > a.current {
 
 .work-detail div:nth-child(4) dd {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .work-detail a {
@@ -408,12 +409,13 @@ header ul > li > a.current {
 }
 
 .work-detail div:nth-child(4) img {
+  padding: 3px 0;
   height: 50px;
   transition: 1.5s ease-out;
 }
 
 .work-detail img:not(:last-child) {
-  margin-right: 10px;
+  margin-right: 13px;
 }
 
 @media (max-width: 768px) {
@@ -439,8 +441,10 @@ header ul > li > a.current {
     margin-left: 18px;
   }
   .work-detail div:nth-child(4) img {
+    padding: 8px 0;
+  }
+  .work-detail div:nth-child(4) img {
     height: 45px;
-    margin-top: 5px;
   }
 }
 
