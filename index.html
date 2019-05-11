@@ -9,7 +9,7 @@
 <link rel="apple-touch-icon" href="./apple-touch-icon.png">
 <link rel="icon" type="image/png" href="./android-chrome-256x256.png">
 
-<link href="https://fonts.googleapis.com/css?family=Halant:300,400,600|Arima+Madurai:500" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Halant:300,400,600|Arima+Madurai:500">
 <link rel="stylesheet" href="./css/normalize.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 <link rel="stylesheet" href="./css/styles.css">
@@ -28,8 +28,10 @@
 
 <main>
   <section id="main" data-delighter>
-    <div id="video-background"></div>
-    <div id="video"></div>
+    
+    <video id="video" poster="./img/star_bg.jpg" autoplay loop muted playsinline>
+      <source src="./img/star001.mp4" type="video/mp4">
+    </video>
     <div id="video-overlay">
       <h1>pokemishi.net</h1>
       <img src="./img/icon.png" alt="icon">
@@ -300,7 +302,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="./js/jquery.ba-throttle-debounce.min.js"></script>
-<script src="./js/player.js"></script>
 <script src="./js/delighters.js"></script>
 <script src="./js/main.js"></script>
 </body>

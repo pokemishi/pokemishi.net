@@ -1,4 +1,5 @@
 $(function() {
+  'use strict';
 
   var $anchors      = $('header > nav > ul > li'),
       $toTheTop     = $('#toTheTop'),
@@ -10,23 +11,16 @@ $(function() {
       $skillItems   = $skill.find('.skill-item'),
       $workItem     = $works.find('.work-item'),
       $workArrow    = $works.find('.work-detail-arrow'),
+      $video        = $main.find('#video'),
 
       arrowWidth    = $workArrow.outerWidth(),
       currentWork   = -1,
       openDetail    = -1,
-      positionTop   = 0,
       scrolling     = false,
       threshold,
-      ua            = navigator.userAgent.toLowerCase();
-
-  // iOS表示不具合対応
-  if (ua.indexOf('iphone') > 0 || ua.indexOf('ipad') > 0) {
-    // background:fixedが効かない問題の対処
-    $('#video-background').css({
-      backgroundAttachment: 'scroll'
-    });
-    removeVideo();
-  }
+      ua            = navigator.userAgent.toLowerCase(),
+      // 読み込みが遅い場合タイムアウト
+      timer         = setTimeout(progressComplete, 5000);
 
   // IE表示不具合対応
   if (ua.indexOf('msie') > 0 || ua.indexOf('trident') > 0) {
@@ -35,13 +29,6 @@ $(function() {
       background: 'none',
       color: '#1464b4'
     });
-    removeVideo();
-  }
-
-  // 動画背景が表示されない場合の処理
-  function removeVideo() {
-    $('#video').remove();
-    setTimeout(progressComplete, 1500);
   }
 
   // #skill h3のbackgroundPositionを個別に変える
@@ -57,6 +44,34 @@ $(function() {
       backgroundPosition: (left + leftAdjust) + '% ' + (top + topAdjust) + '%'
     });
   });
+
+  // 動画読み込み完了時の処理
+  $video.on('canplay', function() {
+    clearInterval(timer);
+    $(this).get(0).playbackRate = 0.5;
+    progressComplete();
+  });
+
+  // ロード終了アニメーション
+  function progressComplete() {
+    var $progress = $('.progress'),
+        $progressInner = $progress.find('.progress-inner');
+
+    $progressInner.find('.spinner').css({
+      animation: 'spin-complete 1.2s ease-out forwards'
+    });
+    $progressInner.find('p').text('Complete!').css({
+      animation: 'text-complete 1.2s ease-in forwards'
+    });
+    $progress.find('.progress-top').delay(1700).animate({
+      top: '-50%'
+    }, 500);
+    $progress.find('.progress-under').delay(1700).animate({
+      top: '100%'
+    }, 500, function() {
+      $progress.hide();
+    });
+  }
 
   // リンクをcurrentにする処理
   function classChange(active) {
@@ -92,14 +107,12 @@ $(function() {
 
     // iPhoneオーバースクロール時にvideo部分が見えてしまうのを防止
     if(positionTop > $works.position().top) {
-      $('#video-background').css({
-        background: 'hsl(260, 50%, 15%)',
-        zIndex: -2
+      $video.css({
+        top: '-100%'
       });
     } else {
-      $('#video-background').css({
-        background: "url('./img/star_bg.jpg') 50% / cover no-repeat",
-        zIndex: -4
+      $video.css({
+        top: 0
       });
     }
 

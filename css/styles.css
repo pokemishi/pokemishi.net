@@ -7,6 +7,7 @@ html {
 body {
   margin: 0;
   color: #fff;
+  background: hsl(260, 50%, 15%);
   font-family: '游ゴシック Medium', '游ゴシック体', 'Yu Gothic Medium', YuGothic, 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 }
 
@@ -132,26 +133,18 @@ header ul > li > a.current {
   display: table;
   margin: 0 auto;
   height: 100vh;
+  position: relative;
 }
 
-#video-background {
-  z-index: -4;
-  background: url('../img/star_bg.jpg') 50% /cover no-repeat;
-  background-attachment: fixed;
-}
-
-#video, #video-background {
+#video {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: -3;
   min-width: 100%;
   min-height: 100%;
   width: auto;
   height: auto;
-}
-
-#video {
-  z-index: -3;
 }
 
 #video-overlay {
@@ -455,7 +448,6 @@ header ul > li > a.current {
   background: hsl(260, 50%, 15%);
   min-height: 50vh;
   transition: 1.5s ease-out;
-  margin-top: -2px;
 }
 
 #sns > h2 {
